@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Services\OpenAI;
+
+use OpenAI\Client as OpenAIClient;
+
+class GetMessageListUseCase
+{
+    protected $openai;
+
+    public function __construct(OpenAIClient $openai)
+    {
+        $this->openai = $openai;
+    }
+
+    public function handle(string $threadId)
+    {
+        // Recuperar la lista de mensajes usando el cliente OpenAI
+        $messageList = $this->openai->threads()->messages->list($threadId);
+
+        // Verifica si la respuesta contiene los mensajes
+        if (isset($messageList['data'])) {
+            $messages = array_map(function($message) {
+                return [
+                    'role' => $message['role'],
+                    'content' => array_map(function($content) {
+                        // Ajusta esto dependiendo de la estructura real de la respuesta
+                        return $content['text']['value'] ?? '';
+                    }, $message['content'] ?? [])
+                ];
+            }, $messageList['data']);
+
+            // Devolver los mensajes en orden inverso
+            return array_reverse($messages);
+        }
+
+        // En caso de error o si no hay mensajes
+        throw new \Exception('No se pudo recuperar la lista de mensajes.');
+    }
+}

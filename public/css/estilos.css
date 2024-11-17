@@ -1,0 +1,92 @@
+/* Configuración Global */
+body {
+    background-color: #000000;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  ul {
+    padding-left: 1.25rem;
+    list-style-type: disc;
+  }
+
+  strong {
+    font-weight: bold;
+    color: #6574cd; /* Indigo */
+    font-size: 1.25rem;
+  }
+
+  em {
+    font-style: italic;
+    color: #ed64a6; /* Pink */
+  }
+
+  /* Botones personalizados */
+  .btn-primary {
+    background-color: #6574cd;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .btn-primary:hover {
+    background-color: #5661b3; /* Indigo oscuro */
+  }
+
+  .btn-primary:disabled {
+    background-color: #6574cd;
+    color: white;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Contenedor de chat */
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 0;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    height: calc(100vh - 90px);
+    padding: 1rem;
+    max-width: 80vw;
+    margin: 0 auto;
+  }
+
+  .chat-messages {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding-right: 1rem;
+    scrollbar-width: thin; /* Sólo para navegadores compatibles */
+  }
+
+  /* Animación de entrada */
+  .fade-in {
+    animation: fadeIn 0.3s;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
