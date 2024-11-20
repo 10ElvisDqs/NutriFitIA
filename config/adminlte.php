@@ -395,6 +395,65 @@ return [
 
             ],
         ],
+
+
+        [
+            'text' => 'Gestionar Ejercicios',
+            'classes' => 'rounded-pill',
+            // 'icon' => 'fa-regular fa-user-shield',
+            'icon' => 'fas class="fas fa-users-cog',
+            'submenu' => [
+                [
+                    'text' => 'Musculos',
+                    'route' => 'muscle.index',
+                    'icon' => 'fas fa-regular fa-user-lock',
+                    'classes' => 'rounded-pill',
+
+                ],
+                [
+                    'text' => 'Equipo',
+                    'route' => 'equipo.index',
+                    
+                    'icon' => 'fas fa-solid fa-dumbbell',
+                    'classes' => 'rounded-pill',
+
+                ],
+                [
+                    'text' => 'Ejercicios',
+                    'route' => 'ejercicio.index',
+                    
+                    'icon' => 'fas fa-solid fa-dumbbell',
+                    'classes' => 'rounded-pill',
+
+                ],
+                [
+                    'text' => 'Tipos',
+                    'route' => 'tipoEjercicio.index',
+                    
+                    'icon' => 'fas fa-solid fa-dumbbell',
+                    'classes' => 'rounded-pill',
+
+                ],
+                [
+                    'text' => 'Ejercicio musculos',
+                    'route' => 'ejercicioMuscle.index',
+                    
+                    'icon' => 'fas fa-solid fa-dumbbell',
+                    'classes' => 'rounded-pill',
+
+                ],
+                [
+                    'text' => 'Ejercicio Equipos',
+                    'route' => 'ejercicioEquipo.index',
+                    
+                    'icon' => 'fas fa-solid fa-dumbbell',
+                    'classes' => 'rounded-pill',
+
+                ],
+            ],
+        ],
+
+
         [
             'text' => 'consultation management',
             'route' => 'consultation.index',

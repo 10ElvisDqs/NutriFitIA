@@ -2,13 +2,21 @@
 
 use App\Http\Controllers\AssignController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\EjercicioController;
+use App\Http\Controllers\EjercicioEquipoController;
+use App\Http\Controllers\EjercicioMusculoController;
+use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\MuscleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TipoEjercicioController;
 use App\Livewire\ChatMessage;
 use App\Livewire\Pages\AssistantPage;
 use App\Livewire\Pages\Chat;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\FormularioProgreso;
+use App\Models\EjercicioEquipo;
+use App\Models\EjercicioMusculo;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,8 +48,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource('/permissions', PermissionController::class)->names('permissions');
     Route::resource('/assign', AssignController::class)->names('assign');
     Route::resource('/consultation', ConsultationController::class)->names('consultation');
-
+    
     Route::get('/formulario', FormularioProgreso::class)->name('formulario.inicio');
+    Route::resource('/muscle',MuscleController::class)->names('muscle');
+    Route::resource('/equipo',EquipoController::class)->names('equipo');
+    Route::resource('/tipoEjercicio',TipoEjercicioController::class)->names('tipoEjercicio');
+    Route::resource('/ejercicio',EjercicioController::class)->names('ejercicio');
+    Route::resource('/ejercicioMuscle',EjercicioMusculoController::class)->names('ejercicioMuscle');
+    Route::resource('/ejercicioEquipo',EjercicioEquipoController::class)->names('ejercicioEquipo');
 });
 
 
