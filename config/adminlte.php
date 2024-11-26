@@ -468,6 +468,13 @@ return [
             'icon' => 'fas fa-fw fa-user',
             'classes' => 'rounded-pill',
         ],
+        ['header' => 'Contacto'],
+        [
+            'text' => 'Contacto',
+            'route' => 'contacto.index',
+            'icon' => 'fas fa-fw fa-user',
+            'classes' => 'rounded-pill',
+        ],
         ['header' => 'exercise management'],
         [
             'text' => 'exercise management',

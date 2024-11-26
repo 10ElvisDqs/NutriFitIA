@@ -12,7 +12,7 @@
                 <h1></h1>
             </header>
             <main>
-                <form action="{{ route('contacto.store') }}" method="POST">
+                <form action="{{ route('contacto.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     {{-- With label, invalid feedback disabled, and form group class --}}
@@ -43,7 +43,8 @@
 
                     <div class="row">
                         <x-adminlte-input name="correo_destino" id="correo_destino" label="Correo destinno"
-                            placeholder="Ingrese su correo" fgroup-class="col-md-6" disable-feedback />
+                            placeholder="Ingrese su correo" fgroup-class="col-md-6" disable-feedback 
+                            value="{{ old('correo_destino', 'correo@defecto.com') }}" />
                         @error('correo_destino')
                             <small style="color: red">{{ $message }}</small>
                         @enderror
@@ -52,19 +53,29 @@
 
 
                     <div class="col-md-6">
-                    {{-- With prepend slot, sm size, and label --}}
-                    <x-adminlte-textarea name="mensaje"  id="mensaje" label="mensaje" rows=5 label-class="text-warning"
-                        igroup-size="sm" placeholder="Escriba el mensaje...">
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fas fa-lg fa-file-alt text-warning"></i>
-                            </div>
-                        </x-slot>
-                    </x-adminlte-textarea>
-                    @error('mensaje')
-                    <small style="color: red">{{ $message }}</small>
-                @enderror
-                </div>
+                        {{-- With prepend slot, sm size, and label --}}
+                        <x-adminlte-textarea name="mensaje" id="mensaje" label="mensaje" rows=5 label-class="text-warning"
+                            igroup-size="sm" placeholder="Escriba el mensaje...">
+                            <x-slot name="prependSlot">
+                                <div class="input-group-text bg-dark">
+                                    <i class="fas fa-lg fa-file-alt text-warning"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-textarea>
+
+                        {{-- Placeholder, sm size, and prepend icon --}}
+                        <x-adminlte-input-file name="adjunto" id="adjunto"  label="Adjunto" igroup-size="sm" placeholder="Choose a file...">
+                            <x-slot name="prependSlot">
+                                <div class="input-group-texst bg-lightblue">
+                                    <i class="fas fa-upload"></i>
+                                </div>
+                            </x-slot>
+                        </x-adminlte-input-file>
+
+                        @error('mensaje')
+                            <small style="color: red">{{ $message }}</small>
+                        @enderror
+                    </div>
 
                     <div>
                         <x-adminlte-button class="btn-flat" type="submit" label="Enviar" theme="primary"

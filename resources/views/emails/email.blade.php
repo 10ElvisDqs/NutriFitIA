@@ -11,6 +11,7 @@
     <p><strong>Nombre :</strong>{{$contacto['nombre']}}</p>
     <p><strong>Correo :</strong>{{$contacto['correo_remitente']}}</p>
     <p><strong>Mensaje :</strong>{{$contacto['mensaje']}}</p>
+    <p><strong>Asunto :</strong> {{$contacto['asunto']}}</p>
 </body>
 
 </html>

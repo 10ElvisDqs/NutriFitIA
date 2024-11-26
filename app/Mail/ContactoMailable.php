@@ -5,9 +5,11 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Http\UploadedFile;
 
 class ContactoMailable extends Mailable
 {
@@ -17,14 +19,16 @@ class ContactoMailable extends Mailable
      * Create a new message instance.
      */
 
-     public $contacto;
-     public $subject;
+    public $contacto;
+    public $subject;
+    public $adjunto;
 
-    public function __construct($contacto)
+    public function __construct($contacto, UploadedFile $adjunto = null)
     {
         $this->from($contacto['correo_remitente']);
         $this->contacto = $contacto;
-        $this->subject= $contacto['asunto'];
+        $this->subject = $contacto['asunto'];
+        $this->adjunto = $adjunto;
     }
 
     /**
@@ -54,6 +58,15 @@ class ContactoMailable extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return $this->adjunto ? [
+            Attachment::fromData(fn() => $this->adjunto->get(), 'PlanNutricional.pdf')->withMime('application/pdf')
+        ] : [];
     }
 }
+
+
+
+
+
+
+

@@ -21,9 +21,11 @@ class ContactoController extends Controller
             'correo_remitente' => 'required|email',
             'correo_destino' => 'required|email',
             'mensaje' => 'required',
+            'adjunto' =>'required|file|mimes:pdf|max:2048',
         ]);
+        $adjunto = $request->file('adjunto');
 
-        $correo = new ContactoMailable($request->all());
+        $correo = new ContactoMailable($request->all(),$adjunto);
         Mail::to($request->correo_destino)->send($correo);
         return redirect()->route('contacto.index')->with('info', 'tu mensaje se ha enviado correctamente.');
     }
