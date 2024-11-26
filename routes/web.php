@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AssignController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\EjercicioController;
 use App\Http\Controllers\EjercicioEquipoController;
 use App\Http\Controllers\EjercicioMusculoController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\MuscleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\TipoEjercicioController;
 use App\Livewire\ChatMessage;
 use App\Livewire\Pages\AssistantPage;
@@ -56,6 +58,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource('/ejercicio',EjercicioController::class)->names('ejercicio');
     Route::resource('/ejercicioMuscle',EjercicioMusculoController::class)->names('ejercicioMuscle');
     Route::resource('/ejercicioEquipo',EjercicioEquipoController::class)->names('ejercicioEquipo');
+    Route::resource('/rutina',RutinaController::class)->names('rutina');
+    Route::resource('/contacto',ContactoController::class)->names('contacto');
 });
 
 
