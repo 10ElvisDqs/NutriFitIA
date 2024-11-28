@@ -15,6 +15,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
 
+    protected $primaryKey = 'id'; // Especificar la clave primaria personalizada
     /**
      * The attributes that are mass assignable.
      *
@@ -55,4 +56,29 @@ class User extends Authenticatable
     {
         return $this->hasMany(Conversation::class);
     }
+
+    public function conditions()
+    {
+        return $this->hasMany(PatientCondition::class, 'patient_id');
+    }
+
+    public function consultations()
+    {
+        return $this->hasMany(Consultation::class, 'patient_id');
+    }
+
+    /**
+     * Relación con el modelo AnthropometricMeasurement
+     */
+    public function anthropometricMeasurements()
+    {
+        return $this->hasMany(AnthropometricMeasurement::class, 'patient_id');
+    }
+
+    // Relación uno a muchos con Diet
+    public function diets()
+    {
+        return $this->hasMany(Diet::class);
+    }
+
 }

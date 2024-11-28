@@ -396,7 +396,7 @@ return [
             ],
         ],
         [
-            'text' => 'consultation management',
+            'text' => 'consultation',
             'route' => 'consultation.index',
             'icon' => 'fas fa-briefcase-medical',
             'classes' => 'rounded-pill',
@@ -439,7 +439,7 @@ return [
         ],
         ['header' => 'Asistente IA'],
         [
-            'text' => 'ChatBot',
+            'text' => 'Asistentes IA',
             'url' => '/chat',
             // 'icon' => 'fas fa-fw fa-user',
             'icon' => 'fa fa-magic',

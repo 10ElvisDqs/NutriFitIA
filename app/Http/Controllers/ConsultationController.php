@@ -3,17 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Services\OpenAiService;
+// use App\Services\OpenAiService;
+// use OpenAI\Laravel\Facades\OpenAI;
+use App\Services\OpenAIService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ConsultationController extends Controller
 {
-    protected $openAiService;
+    protected $openAIService;
 
-    public function __construct(OpenAiService $openAiService)
+    public function __construct(OpenAIService $openAIService)
     {
-        $this->openAiService = $openAiService;
+        $this->openAIService = $openAIService;
+    }
+
+    public function generarPlan(Request $request)
+    {
+        // generarPlan
+        $data=$request->all();
+        return view('AINutritionSystem.diet.generarPlan',compact('data'));
+    }
+    public function recomendacionIA(Request $request)
+    {
+        // Aquí recibes los datos enviados
+        $data = $request->all();
+        // dd($data);
+        // Pasa los datos a la vista
+        return view('AINutritionSystem.RecomendacionIA.recomendacionIA', compact('data'));
+
     }
     /**
      * Display a listing of the resource.

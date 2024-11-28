@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Services\OpenAiService;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
+use App\Services\OpenAIService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,8 +15,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //
          // Registra el servicio en el contenedor de servicios
-        $this->app->singleton(OpenAiService::class, function ($app) {
-            return new OpenAiService();
+        $this->app->singleton(OpenAIService::class, function ($app) {
+            return new OpenAIService();
         });
     }
 
@@ -25,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        Paginator::useBootstrapFive();
     }
 }
